@@ -95,7 +95,7 @@ def attitude_control(X, U_c, h_s):
 
     d_dot = np.array([[phi_ddot],
                     [theta_ddot],
-                    [psi_ddot]])
+                    [psi_ddot]], dtype=float)
 
     A2 = np.array([[0, 0, -np.sin(theta)],
                 [0, np.sin(phi) * phi_dot, -np.sin(phi) * np.sin(theta) * theta_dot - np.cos(phi) * np.cos(theta) * phi_dot],

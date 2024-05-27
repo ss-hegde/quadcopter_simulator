@@ -7,7 +7,7 @@ from rot_mat import rotation_matrix, rotation_matrix_body_euler
 # dX - State derivatives
 #---------------------------------------------------------------------------
 
-def quad_model(X, U, l, m, n):
+def quad_model(X, U, T, l, m, n):
     dX = np.empty((12,),dtype=float)   # pre allocate state derivatives
     # U = np.empty((4,),dtype=float)
 
@@ -46,12 +46,7 @@ def quad_model(X, U, l, m, n):
     angular_derv = rotation_matrix_body_euler(phi_rad, theta_rad, psi_rad) @ np.array([[p_rps], [q_rps], [r_rps]])
     
     # Forces and moments 
-
-    Thrust = U[3] 
-    if Thrust >= 0:
-        T_b_N = Thrust * 100
-    else:
-        T_b_N = 0.0 
+    T_b_N = T
 
     l_b_Nm = l
     m_b_Nm = m 
